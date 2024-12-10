@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>투자 허브 - 도구</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="logo">투자 허브</div>
+        <nav>
+            <a href="index.html">홈</a>
+            <a href="stock.html">주식</a>
+            <a href="bond.html">채권</a>
+            <a href="fund.html">펀드</a>
+            <a href="community.html">커뮤니티</a>
+            <a href="tools.html">도구</a>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h1>투자 도구</h1>
+            <p>다양한 도구를 활용해 투자 전략을 계획하세요.</p>
+        </section>
+
+        <!-- Portfolio Simulator -->
+        <section>
+            <h2>포트폴리오 시뮬레이터</h2>
+            <label for="investment-amount">투자 금액:</label>
+            <input type="number" id="investment-amount" placeholder="금액 입력 (원)">
+            <label for="risk-tolerance">위험 성향:</label>
+            <select id="risk-tolerance">
+                <option value="low">낮음</option>
+                <option value="medium">중간</option>
+                <option value="high">높음</option>
+            </select>
+            <label for="investment-goal">투자 목표:</label>
+            <select id="investment-goal">
+                <option value="short-term">단기</option>
+                <option value="long-term">장기</option>
+            </select>
+            <button id="simulate-button">시뮬레이션 실행</button>
+            <div id="simulation-result" style="margin-top: 10px;"></div>
+        </section>
+
+        <!-- Tax Calculator -->
+        <section>
+            <h2>세금 계산기</h2>
+            <label for="income">과세 소득:</label>
+            <input type="number" id="income" placeholder="소득 입력 (원)">
+            <button id="tax-button">계산</button>
+            <p id="tax-result" style="margin-top: 10px;"></p>
+        </section>
+
+        <!-- Currency Converter -->
+        <section>
+            <h2>환율 변환기</h2>
+            <label for="amount">환전 금액:</label>
+            <input type="number" id="amount" placeholder="금액 입력">
+            <label for="currency">변환 통화:</label>
+            <select id="currency">
+                <option value="USD">USD</option>
+                <option value="EUR">EUR</option>
+                <option value="JPY">JPY</option>
+            </select>
+            <button id="currency-button">변환</button>
+            <p id="currency-result" style="margin-top: 10px;"></p>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 투자 허브. 모든 권리 보유.</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
+
+    <script>
+        // Portfolio Simulator
+        function simulatePortfolio() {
+            const amount = parseFloat(document.getElementById('investment-amount').value);
+            const riskTolerance = document.getElementById('risk-tolerance').value;
+            const goal = document.getElementById('investment-goal').value;
+
+            if (isNaN(amount) || amount <= 0) {
+                alert("올바른 투자 금액을 입력하세요.");
+                return;
+            }
+
+            let portfolio;
+            let expectedReturn;
+
+            // Portfolio recommendation logic
+            if (riskTolerance === "low") {
+                portfolio = "채권 70%, 주식 20%, 현금 10%";
+                expectedReturn = goal === "long-term" ? "4~5%" : "2~3%";
+            } else if (riskTolerance === "medium") {
+                portfolio = "채권 50%, 주식 40%, 현금 10%";
+                expectedReturn = goal === "long-term" ? "6~8%" : "4~6%";
+            } else if (riskTolerance === "high") {
+                portfolio = "채권 20%, 주식 70%, 현금 10%";
+                expectedReturn = goal === "long-term" ? "8~12%" : "6~9%";
+            }
+
+            const result = `
+                <p>시뮬레이션 결과:</p>
+                <ul>
+                    <li>투자 금액: ${amount.toLocaleString()} 원</li>
+                    <li>위험 성향: ${riskTolerance === "low" ? "낮음" : riskTolerance === "medium" ? "중간" : "높음"}</li>
+                    <li>투자 목표: ${goal === "short-term" ? "단기" : "장기"}</li>
+                    <li>추천 포트폴리오: ${portfolio}</li>
+                    <li>예상 수익률: ${expectedReturn}</li>
+                </ul>
+            `;
+            document.getElementById('simulation-result').innerHTML = result;
+        }
+
+        // Tax Calculator
+        document.getElementById("tax-button").addEventListener("click", function () {
+            const income = parseFloat(document.getElementById('income').value);
+            const taxRate = 0.15; // Example tax rate (15%)
+            if (!isNaN(income) && income > 0) {
+                const tax = income * taxRate;
+                document.getElementById("tax-result").innerText = `예상 세금: ${tax.toFixed(2)}원`;
+            } else {
+                alert("올바른 금액을 입력하세요.");
+            }
+        });
+
+        // Currency Converter
+        document.getElementById("currency-button").addEventListener("click", function () {
+            const amount = parseFloat(document.getElementById('amount').value);
+            const currency = document.getElementById('currency').value;
+            const exchangeRates = { USD: 1200, EUR: 1400, JPY: 11 }; // Example rates
+
+            if (!isNaN(amount) && exchangeRates[currency]) {
+                const converted = amount * exchangeRates[currency];
+                document.getElementById("currency-result").innerText = `${amount} ${currency} = ${converted.toFixed(2)} KRW`;
+            } else {
+                alert("올바른 금액과 통화를 입력하세요.");
+            }
+        });
+    </script>
+</body>
+</html>

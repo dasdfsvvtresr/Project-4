@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>커뮤니티</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>커뮤니티</h1>
+        <nav>
+            <a href="index.html">홈</a>
+            <a href="stock.html">주식</a>
+            <a href="bond.html">채권</a>
+            <a href="fund.html">펀드</a>
+            <a href="community.html">커뮤니티</a>
+            <a href="tools.html">도구</a>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h2>투자 커뮤니티</h2>
+            <textarea id="post-input" placeholder="새 글을 작성하세요..."></textarea>
+            <button id="create-post-btn">글 작성</button>
+            <div id="post-list"></div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 투자 허브</p>
+    </footer>
+    <script>
+        // Array to hold posts and their comments
+        const posts = [];
+
+        // Event listener for creating posts
+        document.getElementById("create-post-btn").addEventListener("click", function () {
+            const postInput = document.getElementById("post-input").value.trim();
+            if (postInput) {
+                // Add a new post object with comments array
+                posts.push({ content: postInput, comments: [] });
+                renderPosts();
+                document.getElementById("post-input").value = ""; // Clear input after posting
+            } else {
+                alert("글 내용을 입력해주세요.");
+            }
+        });
+
+        // Function to add a comment to a specific post
+        function addComment(postIndex) {
+            const comment = prompt("댓글을 입력하세요:");
+            if (comment && comment.trim() !== "") {
+                posts[postIndex].comments.push(comment.trim());
+                renderPosts();
+            } else {
+                alert("댓글 내용을 입력해주세요.");
+            }
+        }
+
+        // Function to render posts and their comments
+        function renderPosts() {
+            const postList = document.getElementById("post-list");
+            postList.innerHTML = posts
+                .map(
+                    (post, index) => `
+                    <div class="post">
+                        <p><strong>글:</strong> ${post.content}</p>
+                        <button onclick="addComment(${index})">댓글 작성</button>
+                        <div class="comments">
+                            <h4>댓글:</h4>
+                            ${post.comments.length > 0
+                                ? post.comments
+                                      .map(comment => `<p class="comment-item">${comment}</p>`)
+                                      .join("")
+                                : "<p>댓글이 없습니다.</p>"}
+                        </div>
+                    </div>`
+                )
+                .join("");
+        }
+    </script>
+</body>
+</html>

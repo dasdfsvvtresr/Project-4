@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>투자 허브 - 채권</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="logo">투자 허브</div>
+        <nav>
+            <a href="index.html">홈</a>
+            <a href="stock.html">주식</a>
+            <a href="bond.html">채권</a>
+            <a href="fund.html">펀드</a>
+            <a href="community.html">커뮤니티</a>
+            <a href="tools.html">도구</a>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h2>채권 투자 가이드</h2>
+            <p>채권은 안정적인 수익을 원하는 투자자들에게 적합한 금융 상품입니다. 다양한 채권 옵션을 비교하고 투자 전략을 수립하세요.</p>
+            <ul>
+                <li>채권의 수익률과 만기 기간을 확인하세요.</li>
+                <li>채권의 신용등급과 리스크를 분석하세요.</li>
+                <li>장기적인 투자 관점을 유지하세요.</li>
+            </ul>
+        </section>
+        <section>
+            <h2>채권 리스트</h2>
+            <div id="bond-list"></div>
+        </section>
+        <script>
+            // Sample bond data. Replace this with actual data from your `script.js` or API.
+            const bondData = [
+                { name: "국채 10년", yield: "3.5%", type: "국채" },
+                { name: "국채 5년", yield: "3.2%", type: "국채" },
+                { name: "국채 3년", yield: "3.0%", type: "국채" },
+                { name: "회사채 AA+", yield: "4.5%", type: "회사채" },
+                { name: "회사채 A-", yield: "5.2%", type: "회사채" }
+            ];
+
+            const bondListDiv = document.getElementById('bond-list');
+
+            // Dynamically generate bond list
+            bondData.forEach(bond => {
+                const bondElement = document.createElement('p');
+                bondElement.innerText = `${bond.name} - 수익률: ${bond.yield} (${bond.type})`;
+                bondListDiv.appendChild(bondElement);
+            });
+        </script>
+    </main>
+    <footer>
+        <p>&copy; 2024 투자 허브. 모든 권리 보유.</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

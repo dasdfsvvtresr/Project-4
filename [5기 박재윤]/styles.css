@@ -1,0 +1,215 @@
+/* 기본 스타일 */
+body {
+    font-family: 'Noto Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5fa;
+    color: #333;
+    line-height: 1.8;
+}
+
+/* 헤더 스타일 */
+header {
+    background-color: #34495e;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+header nav {
+    margin-top: 10px;
+}
+
+header nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+header nav ul li {
+    display: inline;
+}
+
+header nav a {
+    color: #ecf0f1;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 8px 12px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+header nav a:hover {
+    background-color: #2c3e50;
+    color: #ffffff;
+}
+
+/* 섹션 스타일 */
+section {
+    max-width: 800px;
+    margin: 30px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+h1, h2, h3 {
+    color: #34495e;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+p {
+    margin-bottom: 20px;
+    line-height: 1.6;
+    color: #555;
+}
+
+/* 텍스트 입력 스타일 */
+textarea, input, select {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    resize: none;
+    font-size: 14px;
+    background-color: #f9f9f9;
+}
+
+textarea:focus, input:focus, select:focus {
+    border-color: #3498db;
+    outline: none;
+}
+
+/* 버튼 스타일 */
+button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+/* 글, 댓글, 대댓글 스타일 */
+.post {
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.comment-item {
+    margin-left: 20px;
+    font-size: 14px;
+    color: #444;
+    padding: 10px;
+    border-left: 4px solid #3498db;
+    background-color: #eef6fc;
+    border-radius: 5px;
+}
+
+.reply {
+    margin-top: 10px;
+    margin-left: 40px;
+    font-size: 14px;
+    padding: 10px;
+    border-left: 4px solid #1abc9c;
+    background-color: #e8f9f4;
+    border-radius: 5px;
+}
+
+/* 푸터 스타일 */
+footer {
+    background-color: #34495e;
+    color: #ecf0f1;
+    text-align: center;
+    padding: 15px 0;
+    margin-top: 40px;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+/* 푸터 텍스트 스타일 */
+footer p {
+    margin: 0;
+}
+
+
+footer a {
+    color: #1abc9c;
+    text-decoration: none;
+    font-size: 15px;
+    padding: 0 10px;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: #16a085;
+    text-decoration: underline;
+}
+
+/* 글 목록 및 상세 보기 */
+#post-list, #post-detail {
+    max-width: 800px;
+    margin: 20px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.post-item {
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.post-item:hover {
+    background-color: #f4f4f4;
+}
+
+.post-item h3 {
+    margin: 0;
+    color: #34495e;
+}
+
+.post-item span {
+    font-size: 12px;
+    color: #888;
+}
+
+/* 시뮬레이션 결과 스타일 */
+#simulation-result {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+/* 애니메이션 효과 */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
